@@ -13,7 +13,7 @@
         "languages": [{
             "id": "mdl",
             "aliases": ["MDL", "mdl"],
-            "extensions": [".script",".def",".mlab"],
+            "extensions": [".script",".def",".mlab",".mdl"],
             "configuration": "./language-configuration.json"
         }],
         "grammars": [{
