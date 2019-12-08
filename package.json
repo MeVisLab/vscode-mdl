@@ -1,0 +1,25 @@
+{
+    "name": "mdl",
+    "displayName": "mdl",
+    "description": "Language support for MeVisLab Description Language (MDL) files",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.40.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "mdl",
+            "aliases": ["MDL", "mdl"],
+            "extensions": [".script",".def",".mlab"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "mdl",
+            "scopeName": "source.mdl",
+            "path": "./syntaxes/mdl.tmLanguage.json"
+        }]
+    }
+}
