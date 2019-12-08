@@ -1,0 +1,38 @@
+// see MDL reference
+
+myTag = "Example with whitespace and \"quotes\" and a \\ backslash "
+
+// enclosing with "* *"
+
+droppedFileCommand = "*py: ctx.field("fileName").value = args[0] *"
+
+
+// enclosing with @@
+
+droppedFileCommand = @@py: ctx.field("fileName").value = args[0] @@
+
+title   = SomeExampleTitle
+comment = "This example comment contains spaces"
+
+genre = Lung
+group = "Release, LungPrivate"
+
+Window {
+    Category {
+        Field inputValue { slider = true }
+    }
+}
+
+Window "Alternative with Title" {
+    Category Standard {
+        Horizontal {
+            CheckBox foo {}
+            ComboBox {
+                comboField = possibleValues
+            }
+        }
+    }
+    Category "Other Details" {
+        Field bar {}
+    }
+}
