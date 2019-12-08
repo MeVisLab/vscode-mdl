@@ -3,6 +3,9 @@
 	"name": "MDL",
 	"patterns": [
 		{
+			"include": "#comments"
+		},
+		{
 			"include": "#keywords"
 		},
 		{
@@ -10,6 +13,18 @@
 		}
 	],
 	"repository": {
+		"comments": {
+			"patterns": [
+				{
+				  	"name": "comment.line.double-slash.mdl",
+					"begin": "//",
+				  	"beginCaptures": {
+						"0": { "name": "punctuation.definition.comment.mdl" }
+				  	},
+				  	"end": "\\n"
+				}
+			]
+		},
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.mdl",
