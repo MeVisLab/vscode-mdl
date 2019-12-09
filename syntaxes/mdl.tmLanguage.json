@@ -12,6 +12,9 @@
 			"include": "#strings"
 		},
 		{
+			"include": "#starstrings"
+		},
+		{
 			"include": "#atstrings"
 		}
 	],
@@ -38,6 +41,17 @@
 			"name": "string.quoted.double.mdl",
 			"begin": "\"",
 			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.mdl",
+					"match": "\\\\."
+				}
+			]
+		},
+		"starstrings": {
+			"name": "string.quoted.stardouble.mdl",
+			"begin": "\"\\*",
+			"end": "\\*\"",
 			"patterns": [
 				{
 					"name": "constant.character.escape.mdl",
