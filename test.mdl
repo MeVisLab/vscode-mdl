@@ -21,6 +21,12 @@ Window {
     Category {
         Field inputValue { slider = true }
     }
+    Field foo {
+        show0 = YES
+        show1 = Yes
+        show2 = yes
+        show3 = yeS
+    }
 }
 
 Window "Alternative with Title" {
