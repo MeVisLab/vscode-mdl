@@ -13,3 +13,7 @@ This extension shall be used for editing MeVisLab MDL files (mostly .def and .sc
 * Test/implement multiline strings
 * More keywords
 * Case-insensitive keywords (e.g. Yes, NO)
+* embeddedLanguage for Python code (e.g. Fiedlisteners)
+
+The vsc-extension-quickstart.md gives information on how to develop and use
+this extension.
