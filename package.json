@@ -1,6 +1,6 @@
 {
     "name": "mdl",
-    "displayName": "mdl",
+    "displayName": "MeVisLab Description Language (MDL)",
     "description": "Language support for MeVisLab Description Language (MDL) files",
     "version": "0.0.2",
     "engines": {

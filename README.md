@@ -10,6 +10,7 @@ VS Code language support for MeVisLab MDL files, including syntax highlighting f
   - `.mdl`
   - `.mlab`
 - Single-line comments (`// ...`)
+- Multi-line comments (`/* ... */`)
 - String forms:
   - `"..."`
   - `"* ... *"`
@@ -27,7 +28,7 @@ VS Code language support for MeVisLab MDL files, including syntax highlighting f
 If you already have a `.vsix` package, install it with:
 
 ```powershell
-code --install-extension .\mdl-0.0.1.vsix --force
+code --install-extension .\mdl-0.0.2.vsix --force
 ```
 
 ### Option 2: Build And Install Locally
@@ -37,7 +38,7 @@ From this repository root:
 ```powershell
 npm install
 npx @vscode/vsce package
-code --install-extension .\mdl-0.0.1.vsix --force
+code --install-extension .\mdl-0.0.2.vsix --force
 ```
 
 ## Development Setup
@@ -53,6 +54,8 @@ npm install
 - Open a `.def` or `.script` file in the dev host and verify highlighting.
 
 ## Updating Language Keywords From MDLValidation.def
+
+NOTE: The `MDLValidation.def` file is not included in this repository. You must obtain it from your MeVisLab installation or development environment (it is located at `MeVisLab/Modules/MDL/MDLValidation.def` in a typical installation).
 
 The grammar is generated/updated by:
 

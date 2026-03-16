@@ -84,6 +84,8 @@ function parseValidationFile(content) {
   const enumLiterals = new Set();
 
   const lines = content.split(/\r?\n/);
+  let braceDepth = 0;
+  const allowTagsDepths = [];
 
   for (const rawLine of lines) {
     const line = stripLineComment(rawLine);
@@ -93,6 +95,15 @@ function parseValidationFile(content) {
     const groupMatch = line.match(/^\s*Group\s+([A-Za-z_][A-Za-z0-9_]*)\b/);
     if (groupMatch && !groupMatch[1].startsWith("_")) {
       blockKeywords.add(groupMatch[1]);
+    }
+
+    const nameAssignMatch = line.match(/^\s*name\s*=\s*([A-Za-z_][A-Za-z0-9_]*)\b/);
+    if (nameAssignMatch) {
+      const namedGroup = nameAssignMatch[1];
+      propertyKeywords.add(namedGroup);
+      if (!namedGroup.startsWith("_")) {
+        blockKeywords.add(namedGroup);
+      }
     }
 
     const allowChildMatch = line.match(/^\s*allowChild\s*=\s*([A-Za-z_][A-Za-z0-9_]*)\b/);
@@ -109,6 +120,28 @@ function parseValidationFile(content) {
     if (assignmentMatch) {
       propertyKeywords.add(assignmentMatch[1]);
     }
+
+    const isInAllowTagsBlock = allowTagsDepths.length > 0;
+    if (isInAllowTagsBlock) {
+      const tagDefinitionMatch = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\b\s*(?:=|[A-Za-z_][A-Za-z0-9_]*)/);
+      if (tagDefinitionMatch) {
+        propertyKeywords.add(tagDefinitionMatch[1]);
+      }
+    }
+
+    if (/^\s*allowTags(?:InChildren)?(?:\s+[A-Za-z_][A-Za-z0-9_]*)?\s*\{/.test(line)) {
+      allowTagsDepths.push(braceDepth + 1);
+    }
+
+    const openBraces = (line.match(/\{/g) || []).length;
+    const closeBraces = (line.match(/\}/g) || []).length;
+    const nextDepth = braceDepth + openBraces - closeBraces;
+
+    while (allowTagsDepths.length > 0 && nextDepth < allowTagsDepths[allowTagsDepths.length - 1]) {
+      allowTagsDepths.pop();
+    }
+
+    braceDepth = nextDepth;
   }
 
   const sortedBlocks = Array.from(blockKeywords).sort((a, b) => a.localeCompare(b));
@@ -127,8 +160,19 @@ function updateGrammar(grammar, parsed, sourcePath) {
     grammar.repository = {};
   }
 
-  grammar.repository.comments = grammar.repository.comments || {
+  grammar.repository.comments = {
     patterns: [
+      {
+        name: "comment.block.mdl",
+        begin: "/\\*",
+        beginCaptures: {
+          "0": { name: "punctuation.definition.comment.begin.mdl" }
+        },
+        end: "\\*/",
+        endCaptures: {
+          "0": { name: "punctuation.definition.comment.end.mdl" }
+        }
+      },
       {
         name: "comment.line.double-slash.mdl",
         begin: "//",
