@@ -1,73 +1,146 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "MDL",
-	"patterns": [
-		{
-			"include": "#comments"
-		},
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		},
-		{
-			"include": "#starstrings"
-		},
-		{
-			"include": "#atstrings"
-		}
-	],
-	"repository": {
-		"comments": {
-			"patterns": [{
-				"name": "comment.line.double-slash.mdl",
-				"begin": "//",
-				"beginCaptures": {
-					"0": { "name": "punctuation.definition.comment.mdl" }
-				},
-				"end": "\\n"
-			}]
-		},
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.mdl",
-				"match": "(?i)\\b(true|false|on|off|yes|no)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.mdl",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.mdl",
-					"match": "\\\\."
-				}
-			]
-		},
-		"starstrings": {
-			"name": "string.quoted.stardouble.mdl",
-			"begin": "\"\\*",
-			"end": "\\*\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.mdl",
-					"match": "\\\\."
-				}
-			]
-		},
-		"atstrings": {
-			"name": "string.quoted.atquoted.mdl",
-			"begin": "@@",
-			"end": "@@",
-			"patterns": [
-				{
-					"name": "constant.character.escape.mdl",
-					"match": "\\\\."
-				}
-			]
-		}
-	},
-	"scopeName": "source.mdl"
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "MDL",
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#starstrings"
+        },
+        {
+            "include": "#atstrings"
+        },
+        {
+            "include": "#directives"
+        },
+        {
+            "include": "#blockKeywords"
+        },
+        {
+            "include": "#propertyKeywords"
+        },
+        {
+            "include": "#enumLiterals"
+        },
+        {
+            "include": "#keywords"
+        }
+    ],
+    "repository": {
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.line.double-slash.mdl",
+                    "begin": "//",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.mdl"
+                        }
+                    },
+                    "end": "\\n"
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.mdl",
+                    "match": "(?i)\\b(true|false|on|off|yes|no)\\b"
+                }
+            ]
+        },
+        "strings": {
+            "name": "string.quoted.double.mdl",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.mdl",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "starstrings": {
+            "name": "string.quoted.stardouble.mdl",
+            "begin": "\"\\*",
+            "end": "\\*\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.mdl",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "atstrings": {
+            "name": "string.quoted.atquoted.mdl",
+            "begin": "@@",
+            "end": "@@",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.mdl",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "directives": {
+            "patterns": [
+                {
+                    "name": "keyword.control.directive.mdl",
+                    "match": "^\\s*#(?:ifset|ifnset|include)\\b"
+                }
+            ]
+        },
+        "blockKeywords": {
+            "patterns": [
+                {
+                    "name": "entity.name.type.block.mdl",
+                    "match": "^\\s*(?:Accel|Action|BackgroundTasksView|BadgeScript|Box|Button|ButtonBar|ButtonBox|ButtonGroup|Category|CheckBox|ColorEdit|Colors|ComboBox|CommandHandler|Commands|CustomWidget|DefineStyle|Deployment|Description|DicomTree|DynamicFrame|Empty|EventFilter|Field|FieldLabel|FieldList|FieldListener|FileFormatLoader|ForceRequiredFile|FreeFloat|FunctionalTestCase|GenericTestCase|Grid|HelpOverview|Horizontal|HorizontalNB|HSeparator|HSpacer|HyperLabel|HyperText|IconView|Image|Inputs|Interface|IntervalSlider|InventorModule|Label|LineEdit|ListBox|ListView|Log|MacroModule|MATEAction|MaterialEditor|MATESubMenu|MATEToolBar|MenuBar|MenuItem|MenuSearch|MeVisLabActions|MeVisLabDockPresets|MeVisLabDockWindows|MeVisLabGlobalGenres|MeVisLabHelpOfflineStyles|MeVisLabMainMenu|MeVisLabNetworkContextMenu|MeVisLabToolBars|MeVisLabValidatorDefinition|MLModule|ModuleAction|ModuleGroup|ModuleHelp|ModuleHelpDetails|ModuleHelpInputs|ModuleHelpInteraction|ModuleHelpMetaInformation|ModuleHelpOutputs|ModuleHelpOverview|ModuleHelpParameters|ModuleHelpParentPage|ModuleHelpPurpose|ModuleHelpTips|ModuleHelpUsage|ModuleHelpWindow|ModuleHelpWindows|ModuleWizard|NetworkPanel|NetworkView|NumberEdit|ObjectWrapper|OutputInspector|Outputs|PackageManager|Panel|Parameters|PathBrowser|Persistence|PopupMenu|PreloadDLL|PreloadModule|ProgressBar|PushButtonGroup|PythonTextView|RadioButtonGroup|RemoteBaseHandler|root|Row|ScriptExtension|ScriptingConsole|ScriptLanguage|ScrollView|Separator|ShortcutEditor|Slider|SpacerX|SpacerY|Splitter|STRING|SubMenu|Table|TabView|TabViewItem|TestCaseSuite|TextView|ThumbWheel|ToolBar|ToolButton)\\b"
+                },
+                {
+                    "name": "entity.name.type.block.mdl",
+                    "match": "^\\s*(?:ToolButtonGroup|TouchBarItem|UserGenres|UserIDEActions|UserIDEDockWindows|UserIDEMenus|UserIDEToolBars|UserMDLValidator|VectorEdit|Vertical|VerticalNB|Viewer|VSeparator|VSpacer|Web|WebDeployment|WidgetControl|Window)\\b"
+                }
+            ]
+        },
+        "propertyKeywords": {
+            "patterns": [
+                {
+                    "name": "support.type.property-name.mdl",
+                    "match": "\\b(?:accel|accelHint|acceptDrops|acceptWheelEvents|ActionReference|activatedCommand|activeInputIndex|activeOffImage|activeOnImage|activeOutputIndex|alias|alignGroup|alignGroupX|alignGroupY|allow|allowAny|allowChild|allowedRemoteCalls|allowedTypes|allowGroupForAnyChild|allowLinks|allowPrefix|allowRenaming|allowResize|alternateBase|applyButton|args|arrangement|associatedTests|author|autoApply|autoArrange|autoComplete|automaticPrototype|autoPageStep|autoRaise|autoRaiseButtons|autoRepeat|autoResize|autoScale|autoScaleIcons|autoSize|background|backgroundColor|base|bg|bgMode|bgModeBorderX|bgModeBorderY|bgOrigin|border|borderless|boxText|brightText|browseButton|browseFilter|browseSelectedCommand|browseTitle|browsingGroup|buddy|button|buttonBgMode|buttonBgModeBorderX|buttonBgModeBorderY|buttonClickedCommand|buttonPressedCommand|buttonReleasedCommand|buttonText|callLater|caseSensitiveAutoComplete|cd|cellSpacing|centerField|checkable|checkableButtons|checked|checkedField|checkList|checkListItemChangedCommand|childAlignGroup|childAlignGroupX|childAlignGroupY|children|childrenCollapsible|class|clickedCommand|clone|color|colspan|columnSeparator|comboBox|comboCompletes|comboEditable|comboField|comboSeparator|command|comment|componentTitles|condition|console|consoleCommand|contentFile|contextMenuOnEmptyList|contextMenuRequestedCommand|control|createNewPackageCommand|currentChangedCommand|currentIndexField|customizationLabel|dark|dataDirectory|dateFormat|dateTimeFormat|debug|default|defaultValid|definition|delay|delegatedEvaluationCommand|delegatedIntrospectionCommand|dependsOn|deprecatedName)\\b(?=\\s*=)"
+                },
+                {
+                    "name": "support.type.property-name.mdl",
+                    "match": "\\b(?:derive|description|destroyedCommand|developerUrl|direction|directory|disabledOffImage|disabledOnImage|dll|DLL|documentation|doubleClickedCommand|droppedFileCommand|droppedFilesCommand|droppedObjectCommand|duplicatesEnabled|eatEvent|edge|edit|editable|editBg|editBgMode|editBgModeBorderX|editBgModeBorderY|editField|editText|enabled|enumAutoFormat|equalButtonHeights|equalButtonWidths|exampleNetwork|exclusiveButtons|Execute|exportedWindow|extensions|externalDefinition|family|fg|fh|field|fieldDragging|fieldIsRemoved|fieldPrototype|fields|file|fileDialogCreatesUnexpandedFilenames|fileNameCompletion|filenameField|filter|filterButtons|finalizeCommand|fixedHeight|fixedPitch|fixedWidth|flatButtons|foreground|format|frameLineWidth|frameMidLineWidth|fullscreen|fw|genre|globalStop|group|h|hasGroupInputs|hasTranslation|hasViewer|header|headerTitles|height|helpID|hidden|hide|hideCommand|hideFromCompletion|hideModule|highlight|highlightedText|hintText|hiResRendering|html_class|html_classField|html_cssClass|html_cssField|html_cssString|html_style|html_styleField|hybridMLModule|icon|iconHeight|iconWidth|id|image|imageName|importPath|indent|info|init|initCommand|inlineDrawing|inlineWidgetsMargin|inlineWidgetsSpacing|insertPolicy|instanceName|internalName|isFilePath|isInternal|italic|itemActivatedCommand|itemCollapsedCommand|itemExpandedCommand|itemRenamedCommand|itemTextPos|key|keywords|labelAlignGroup|language|layout|legacyValue|library|licenseString|light|link|linkActivatedCommand|linkHoveredCommand|linkVisited|listenField|lostFocusCommand|lowerField|maintainer|margin|max|maxCount|maxh)\\b(?=\\s*=)"
+                },
+                {
+                    "name": "support.type.property-name.mdl",
+                    "match": "\\b(?:maximized|maximumHeight|maximumWidth|maxItemWidth|maxLength|maxTextLength|maxw|mdlHelp|MeVisAboutExtension|mh|mid|midlight|min|minimumHeight|minimumWidth|minLength|mode|module|moduleItemCreatedCommand|moduleName|moduleType|moreButton|mouseButtonClickedCommand|multiple|mw|name|needsDocumentation|newLine|normalOffImage|normalOnImage|objectWrapper|onlyOneInstance|overwrite|owner|package|packageGroup|pageStep|panel|panelByGroupTitle|panelName|parent|parentWakeupCommand|pathDblClickedCommand|pathSelectedCommand|perFunctionResultDirectory|persistent|ph|plugin|popup|popupDelay|popupMode|preferredHeight|preferredRenderer|preferredWidth|preloadDLL|prepareEditCommand|pressedIndicatorField|priority|projectSource|pw|ratio|receiver|relatedFile|remoteBaseHandler|removed|requiresTargetPackage|resizeCommand|resizeMode|resizeX|resizeY|restoredFromUndoHistoryCommand|returnPressedCommand|richText|rightButtonClickedCommand|role|root|rootIsDecorated|rotationMode|rowSeparator|runApplicationCommand|sameTypeAs|scale|scaleFactor|scaleIconSetToMinSize|scriptExtension|scriptFile|scriptingHelp|scriptOnly|section|seeAlso|selectable|selectedCommand|selectionChangedCommand|selectionMode|Separator|shadow|shortcut|shouldCloseCommand|showButtonNames|showCommand|showIconsOnly|showItemInternals|showLineNumbers|showStepButtons|showTestFunctionSortingLiterals|shy|size|slider|sliderSnap|slot|snap|sortAscending|sortByColumn|source|spacing|status|statusTip|step|stepstep|storingToUndoHistoryCommand|stretchX|stretchY|stripEnumItemPrefix|strips|styleSheetFile|styleSheetString|sunkenVectorLabels|symbol|tabDependsOn)\\b(?=\\s*=)"
+                },
+                {
+                    "name": "support.type.property-name.mdl",
+                    "match": "\\b(?:tabDeselectedCommand|tabEnabled|tabHierarchy|tabIcon|tabIndent|tabInitial|tabSelectedCommand|tabStopWidth|tabText|tabTitle|tabTooltip|Tag|templateList|testCases|testGroups|testsToOmit|text|textChangedCommand|textField|textFile|textPosition|textVisible|tickmarks|timeFormat|timeout|title|titleField|titleFile|toggledCommand|toggleField|tooltip|toolTip|toolTipBase|tooltipField|toolTipText|tracking|translationHint|translationLanguages|translationModules|triggersLoading|type|typeHint|updateDelay|updateFieldWhileEditing|upperField|useOriginalIconSizes|userPackagePathField|userScript|useSheet|validator|value|valueFieldTypes|valueRecommended|values|version|viewing|visibilityPriority|visible|visibleInGUI|visibleOn|visibleRows|w|wakeupCommand|weight|whatsThis|widget|widgetControl|widgetName|width|widthField|window|windowActivatedCommand|windowText|wordWrap|wrap|wrapColumn|wrapperClassName|wrapsAround|x|x2|y|y2)\\b(?=\\s*=)"
+                }
+            ]
+        },
+        "enumLiterals": {
+            "patterns": [
+                {
+                    "name": "constant.language.enum.mdl",
+                    "match": "\\b(?:AcceptRole|ActionRole|Adjust|AfterCurrent|Ancestor|ApplyRole|AtBottom|AtCurrent|AtTop|Auto|BeforeCurrent|Black|Bold|Bottom|BottomLeft|BottomRight|box|Center|Control|Delayed|DemiBold|deprecated|DestructiveRole|directory|directoryReadOnly|Expanding|Extended|False|Fit|Fixed|hardware|HelpRole|Ignored|Instant|Left|LeftToRight|Light|Maximum|MenuButton|Minimized|Minimum|MinimumExpanding|Multi|Name|No|NoInsertion|None|normal|Normal|NoRole|NoSelection|open|openReadOnly|Parent|password|Preferred|RejectRole|Repeat|ResetRole|ResizedBox|Right|save|Single|Size|SmoothFit|SmoothStretch|SmoothStretchX|SmoothStretchY|software|stable|Stretch|StretchX|StretchY|test|Time|Top|TopLeft|TopRight|TopToBottom|Tornoff|triangle|True|Unsorted|Window|Yes|YesRole)\\b"
+                }
+            ]
+        }
+    },
+    "scopeName": "source.mdl",
+    "generatedFrom": {
+        "source": "c:\\dev\\cmake\\mms\\MeVisLab\\IDE\\Modules\\IDE\\MDLValidation.def",
+        "generatedAt": "2026-03-16T10:45:06.203Z",
+        "blockKeywordCount": 146,
+        "propertyKeywordCount": 468,
+        "enumLiteralCount": 86
+    }
 }

@@ -2,7 +2,7 @@
     "name": "mdl",
     "displayName": "mdl",
     "description": "Language support for MeVisLab Description Language (MDL) files",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "engines": {
         "vscode": "^1.40.0"
     },
@@ -14,6 +14,10 @@
         "url": "https://github.com/MeVisLab/vscode-mdl/issues"
     },
     "homepage": "https://github.com/MeVisLab/vscode-mdl#readme",
+    "scripts": {
+        "update-language-config": "node scripts/update-mdl-language-config.js",
+        "test": "node --test"
+    },
     "categories": [
         "Programming Languages"
     ],
