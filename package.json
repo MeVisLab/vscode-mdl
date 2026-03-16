@@ -6,20 +6,43 @@
     "engines": {
         "vscode": "^1.40.0"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/MeVisLab/vscode-mdl.git"
+    },
+    "bugs": {
+        "url": "https://github.com/MeVisLab/vscode-mdl/issues"
+    },
+    "homepage": "https://github.com/MeVisLab/vscode-mdl#readme",
     "categories": [
         "Programming Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "mdl",
-            "aliases": ["MDL", "mdl"],
-            "extensions": [".script",".def",".mlab",".mdl"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "mdl",
-            "scopeName": "source.mdl",
-            "path": "./syntaxes/mdl.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "mdl",
+                "aliases": [
+                    "MDL",
+                    "mdl"
+                ],
+                "extensions": [
+                    ".script",
+                    ".def",
+                    ".mlab",
+                    ".mdl"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "mdl",
+                "scopeName": "source.mdl",
+                "path": "./syntaxes/mdl.tmLanguage.json"
+            }
+        ]
+    },
+    "devDependencies": {
+        "@vscode/vsce": "^3.7.1"
     }
 }
