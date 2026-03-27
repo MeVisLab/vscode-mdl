@@ -1,25 +1,52 @@
 {
     "name": "mdl",
-    "displayName": "mdl",
+    "displayName": "MeVisLab Description Language (MDL)",
     "description": "Language support for MeVisLab Description Language (MDL) files",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "engines": {
         "vscode": "^1.40.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/MeVisLab/vscode-mdl.git"
+    },
+    "bugs": {
+        "url": "https://github.com/MeVisLab/vscode-mdl/issues"
+    },
+    "homepage": "https://github.com/MeVisLab/vscode-mdl#readme",
+    "scripts": {
+        "update-language-config": "node scripts/update-mdl-language-config.js",
+        "test": "node --test"
     },
     "categories": [
         "Programming Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "mdl",
-            "aliases": ["MDL", "mdl"],
-            "extensions": [".script",".def",".mlab",".mdl"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "mdl",
-            "scopeName": "source.mdl",
-            "path": "./syntaxes/mdl.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "mdl",
+                "aliases": [
+                    "MDL",
+                    "mdl"
+                ],
+                "extensions": [
+                    ".script",
+                    ".def",
+                    ".mlab",
+                    ".mdl"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "mdl",
+                "scopeName": "source.mdl",
+                "path": "./syntaxes/mdl.tmLanguage.json"
+            }
+        ]
+    },
+    "devDependencies": {
+        "@vscode/vsce": "^3.7.1"
     }
 }

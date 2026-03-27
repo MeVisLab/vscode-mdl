@@ -1,0 +1,12 @@
+// top-level line comment
+Group Window {
+  /* block comment starts
+     contains // line-comment-looking text
+     contains "quoted text" and @@ markers @@
+  */
+  title = "Visible"
+
+  /* second block with nested-looking opener: /* not real nesting */
+  status = stable
+}
+// trailing line comment
