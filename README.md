@@ -138,5 +138,4 @@ This creates a `.vsix` package in the repository root.
 
 ## Notes
 
-- The repository currently has no license file; `vsce` will warn during packaging.
 - See `vsc-extension-quickstart.md` for baseline VS Code extension development notes.
